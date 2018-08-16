@@ -7,21 +7,24 @@ var p2Display = document.querySelector("#p2Display");
 var numInput = document.querySelector("input");
 var p = document.querySelector("p");
 var winningScoreDisplay = document.querySelector("p span");
+var feedback = document.getElementById("feedback");
 var p1Score = 0;
 var p2Score = 0;
 var gameOver = false;
 var winningScore = 1;
+numInput.value = '1';
 
 p1Button.addEventListener("click", function(){
     if(!gameOver){
         p1Score++;
-        // console.log(p1Score, winningScore);
         console.log("Player 1 score: " + p1Score);
         p1Display.textContent = p1Score;
         if (p1Score >= winningScore){
             p1Display.classList.add("winner");
-            gameOver = true;
             console.log("Game Over! Player 1 wins!");
+            feedback.textContent = "Game Over! Player 1 wins!";
+            gameOver = true;
+            clearFeedback();
         }
     }
 });
@@ -33,8 +36,10 @@ p2Button.addEventListener("click",function(){
         p2Display.textContent = p2Score;
         if (p2Score >= winningScore){
             p2Display.classList.add("winner");
-            gameOver = true;
             console.log("Game Over! Player 2 wins!");
+            feedback.textContent = "Game Over! Player 2 wins!";
+            gameOver = true;
+            clearFeedback();
         }
     }
 });
@@ -49,9 +54,13 @@ numInput.addEventListener("change", function(){
     winningScoreDisplay.textContent = Number(this.value);
     } else {
         this.value = winningScore;
-        console.log("The target score must be higher than the current scores!")
-    }
+        var scoreLogicReminder = "The target score must be higher than the current scores!"
+        console.log(scoreLogicReminder);
+        feedback.textContent = scoreLogicReminder;
+        clearFeedback();
+    //Original solution reset on score change
     //reset();
+    }
 })
 
 // could also reset classes, logical and visual score, and game status using: "window.location.href = window.location.href;"
@@ -70,4 +79,12 @@ function reset(){
     winningScoreDisplay.textContent = winningScore;
     numInput.value = winningScore;
     console.clear();
+    feedback.textContent = "";
+}
+
+//needs throttling
+function clearFeedback(){
+  setTimeout(function(){
+    feedback.textContent = "";
+  }, 4000)
 }
