@@ -2,4 +2,4 @@
 
 * Modified scorekeeper from *The Web Developer Bootcamp* by *Colt Steele*
 
-Viewable on Codepen: [Scorekeeper](https://codepen.io/FreeFly/pen/ERJNrY)
+Viewable on GitHub Pages: [Scorekeeper](https://freeflyfall.github.io/customScorekeeper/)
