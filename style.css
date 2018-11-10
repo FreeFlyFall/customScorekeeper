@@ -22,7 +22,10 @@ input, select, textarea{
     display: grid;
     grid-gap: 5px;
     grid-template-columns: 50% 50%;
-    grid-template-rows: 10% 10%;
+    /* Changed after https://www.chromestatus.com/feature/6708326821789696 */
+    /* Changes the behavior of percentage row tracks and gutters in grid containers with indefinite heights */
+    /* grid-template-rows: 10% 10%; */
+    grid-template-rows: 1fr 1fr;
     font-size: 16pt;
 }
 
